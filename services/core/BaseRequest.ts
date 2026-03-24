@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig, isCancel } from 'axios'
-import { BASE_API, DEFAULT_TIMEOUT } from '../../config/constants/server'
-import { formatUrl } from '../../utils/urlHelper'
+import { BASE_API, DEFAULT_TIMEOUT } from '../../shared/constants/server'
+import { formatUrl } from '../../shared/utils/urlHelper'
 import { MapperRegistry } from './types'
 
-import { toast } from '../../utils/toast-helper'
+import { toast } from '../../shared/utils/toast-helper'
 
 export interface RequestConfig extends AxiosRequestConfig {
   disabledToast?: boolean

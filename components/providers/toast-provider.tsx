@@ -1,4 +1,4 @@
-import { toast } from '@/utils/toast-helper'
+import { toast } from '@/shared/utils/toast-helper'
 import React, { useEffect } from 'react'
 import { Toast, ToastDescription, ToastTitle, useToast } from '../ui/toast'
 

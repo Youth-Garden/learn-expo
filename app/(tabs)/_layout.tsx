@@ -3,8 +3,8 @@ import React from 'react'
 
 import { HapticTab } from '@/components/haptic-tab'
 import { IconSymbol } from '@/components/ui/icon-symbol'
-import { Colors } from '@/config/constants'
-import { useColorScheme } from '@/hooks/use-color-scheme'
+import { Colors } from '@/shared/constants'
+import { useColorScheme } from '@/shared/hooks/use-color-scheme'
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()

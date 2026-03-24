@@ -7,7 +7,7 @@ import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { Collapsible } from '@/components/ui/collapsible'
 import { IconSymbol } from '@/components/ui/icon-symbol'
-import { Fonts } from '@/config/constants'
+import { Fonts } from '@/shared/constants'
 
 export default function TabTwoScreen() {
   return (

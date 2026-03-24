@@ -1,4 +1,4 @@
-import { APIEndpointEnum } from '../../config/constants/server'
+import { APIEndpointEnum } from '../../shared/constants/server'
 import { BaseRequest, BaseResponse } from '../core'
 import { registry } from './registry'
 import { MappedManga } from './types'

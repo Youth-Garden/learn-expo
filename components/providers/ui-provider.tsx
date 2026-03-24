@@ -12,7 +12,7 @@ export const UIProvider = ({ children }: { children: React.ReactNode }) => {
   const colorScheme = useColorScheme()
 
   return (
-    <GluestackUIProvider mode="dark">
+    <GluestackUIProvider mode="light">
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         {children}
         <ToastProvider />

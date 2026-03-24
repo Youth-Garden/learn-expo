@@ -6,7 +6,7 @@ import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
 
 import { Providers } from '@/components/providers'
-import '@/global.css'
+import '../global.css'
 
 export const unstable_settings = {
   initialRouteName: '(tabs)',

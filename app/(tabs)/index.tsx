@@ -1,107 +1,50 @@
-import { Image } from 'expo-image'
-import { Platform, StyleSheet } from 'react-native'
+import { Box } from '@/components/ui/box'
+import { Heading } from '@/components/ui/heading'
+import { HStack } from '@/components/ui/hstack'
+import { IconSymbol } from '@/components/ui/icon-symbol'
+import { VStack } from '@/components/ui/vstack'
+import React from 'react'
+import { ScrollView } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { HelloWave } from '@/components/hello-wave'
-import ParallaxScrollView from '@/components/parallax-scroll-view'
-import { ThemedText } from '@/components/themed-text'
-import { ThemedView } from '@/components/themed-view'
-import { Link } from 'expo-router'
+import { TrendingSection } from '@/features/home/components/trending-section'
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{' '}
-          to see changes. Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction
-              title="Action"
-              icon="cube"
-              onPress={() => alert('Action pressed')}
-            />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <Box className="flex-1 bg-background-0">
+          {/* Header Area */}
+          <HStack className="px-4 py-4 justify-between items-center">
+            <Heading size="2xl" className="text-primary-500 font-bold">
+              MangaFlow
+            </Heading>
+            <Box className="bg-background-100 p-2 rounded-full">
+              <IconSymbol name="magnifyingglass" size={24} color="#687076" />
+            </Box>
+          </HStack>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">
-            npm run reset-project
-          </ThemedText>{' '}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{' '}
-          directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+          {/* Trending Section powered by React Query */}
+          <TrendingSection />
+
+          {/* Latest Updates Skeleton Stub */}
+          <VStack className="px-4 mt-6 mb-10 gap-4">
+            <Heading size="xl">Latest Updates</Heading>
+            {Array.from({ length: 3 }).map((_, i) => (
+              <HStack key={i} className="bg-background-50 p-3 rounded-xl gap-3">
+                <Box className="w-16 h-20 rounded-md bg-background-200" />
+                <VStack className="flex-1 justify-center gap-1">
+                  <Box className="w-3/4 h-4 rounded bg-background-200" />
+                  <Box className="w-1/2 h-3 rounded bg-background-200 mt-2" />
+                </VStack>
+              </HStack>
+            ))}
+          </VStack>
+        </Box>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-})

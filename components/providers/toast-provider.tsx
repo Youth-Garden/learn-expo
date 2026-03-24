@@ -22,7 +22,7 @@ export const ToastProvider = () => {
         },
       })
     })
-  }, [toast])
+  }, [_toast])
 
   return null
 }

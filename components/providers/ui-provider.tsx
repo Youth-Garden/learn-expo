@@ -7,6 +7,7 @@ import {
   ThemeProvider,
 } from '@react-navigation/native'
 import React from 'react'
+import { ModalProvider } from './modal-provider'
 
 export const UIProvider = ({ children }: { children: React.ReactNode }) => {
   const colorScheme = useColorScheme()
@@ -15,6 +16,8 @@ export const UIProvider = ({ children }: { children: React.ReactNode }) => {
     <GluestackUIProvider mode="light">
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         {children}
+
+        <ModalProvider />
         <ToastProvider />
       </ThemeProvider>
     </GluestackUIProvider>

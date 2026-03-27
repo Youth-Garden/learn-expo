@@ -15,7 +15,10 @@ export abstract class BaseRequest {
   protected readonly axiosInstance: AxiosInstance
   protected readonly mappers: MapperRegistry
 
-  constructor(mappers: MapperRegistry = {}, baseURL: string = BASE_API) {
+  constructor(
+    mappers: MapperRegistry = {},
+    baseURL: string = BASE_API as string,
+  ) {
     this.axiosInstance = axios.create({
       baseURL,
       timeout: DEFAULT_TIMEOUT,

@@ -1,5 +1,6 @@
 import { APIEndpointEnum } from '../../shared/constants/server'
 import { BaseRequest, BaseResponse } from '../core'
+import { Paging } from '../core/types'
 import { registry } from './registry'
 import { Manga } from './types'
 
@@ -12,7 +13,7 @@ class MangaService extends BaseRequest {
     limit: number = 20,
     offset: number = 0,
     signal?: AbortSignal,
-  ): Promise<BaseResponse<Manga[]>> {
+  ): Promise<BaseResponse<Paging<Manga>>> {
     return this._get(
       APIEndpointEnum.MangaList,
       {
@@ -28,7 +29,7 @@ class MangaService extends BaseRequest {
   public getMangaDetail(
     mangaId: string,
     signal?: AbortSignal,
-  ): Promise<BaseResponse<any>> {
+  ): Promise<BaseResponse<Manga>> {
     return this._get(
       APIEndpointEnum.MangaDetail,
       { includes: ['cover_art', 'author', 'artist'] },
@@ -40,7 +41,7 @@ class MangaService extends BaseRequest {
     limit: number = 20,
     offset: number = 0,
     signal?: AbortSignal,
-  ): Promise<BaseResponse<Manga[]>> {
+  ): Promise<BaseResponse<Paging<Manga>>> {
     return this._get(
       APIEndpointEnum.MangaList,
       {
@@ -59,7 +60,7 @@ class MangaService extends BaseRequest {
     limit: number = 20,
     offset: number = 0,
     signal?: AbortSignal,
-  ): Promise<BaseResponse<Manga[]>> {
+  ): Promise<BaseResponse<Paging<Manga>>> {
     return this._get(
       APIEndpointEnum.MangaList,
       {

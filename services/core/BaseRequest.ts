@@ -57,10 +57,10 @@ export abstract class BaseRequest {
 
       const result = await this.axiosInstance.request(finalConfig)
 
-      if (result.data?.result === 'error' && !config.disabledToast) {
+      if (result.data?.code === 'error' && !config.disabledToast) {
         toast.error(
           'API Error',
-          result.data.errors?.[0]?.detail || 'Unknown error occurred',
+          result.data.message || 'Unknown error occurred',
         )
       }
 

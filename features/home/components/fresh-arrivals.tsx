@@ -31,7 +31,7 @@ export const FreshArrivals = () => {
     return null
   }
 
-  const mangas = data.pages.flatMap(page => page.data)
+  const mangas = data.pages.flatMap(page => page.data.items)
 
   return (
     <VStack className="mb-12">

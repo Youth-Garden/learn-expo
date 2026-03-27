@@ -1,19 +1,17 @@
 export interface BaseResponse<T> {
-  result: 'ok' | 'error'
-  response: 'collection' | 'entity'
+  code: string
+  message: string
   data: T
-  limit?: number
-  offset?: number
-  total?: number
-  // Dành cho trường hợp lỗi của MangaDex
-  errors?: any[]
+  error?: any
 }
 
 export interface Paging<T> {
-  data: T[]
-  limit: number
-  offset: number
-  total: number
+  items: T[]
+  meta: {
+    limit: number
+    offset: number
+    total: number
+  }
 }
 
 export type ResponseMapper = (data: any) => any

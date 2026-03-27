@@ -1,26 +1,44 @@
-import { BaseResponse } from '../core/types'
+import {
+  createErrorResponse,
+  createPaging,
+  createResponse,
+} from '../core/utils'
 import { Manga } from './types'
 
-export const mangaListMapper = (data: any): BaseResponse<Manga[]> => {
-  if (data?.result === 'ok' && Array.isArray(data.data)) {
-    const mappedData = data.data.map((manga: any) => {
-      const coverArt = manga.relationships?.find(
-        (rel: any) => rel.type === 'cover_art',
-      )
-      const fileName = coverArt?.attributes?.fileName
-      return {
-        ...manga,
-        coverUrl: fileName
-          ? `https://uploads.mangadex.org/covers/${manga.id}/${fileName}`
-          : null,
-      }
-    })
+const mapManga = (manga: any): Manga => {
+  const coverArt = manga.relationships?.find(
+    (rel: any) => rel.type === 'cover_art',
+  )
+  const fileName = coverArt?.attributes?.fileName
 
-    return {
-      ...data,
-      data: mappedData,
-    }
+  return {
+    ...manga,
+    coverUrl: fileName
+      ? `https://uploads.mangadex.org/covers/${manga.id}/${fileName}`
+      : null,
+  }
+}
+
+export const mangaListMapper = (data: any) => {
+  if (data?.result === 'ok' && Array.isArray(data.data)) {
+    return createResponse(createPaging(data.data.map(mapManga), data))
   }
 
-  return data
+  return createErrorResponse(
+    data?.errors?.[0]?.detail || 'Unknown error',
+    createPaging<Manga>([], {}),
+    data?.errors,
+  )
+}
+
+export const mangaDetailMapper = (data: any) => {
+  if (data?.result === 'ok' && data.data) {
+    return createResponse(mapManga(data.data))
+  }
+
+  return createErrorResponse(
+    data?.errors?.[0]?.detail || 'Unknown error',
+    data?.data,
+    data?.errors,
+  )
 }

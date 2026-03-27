@@ -6,7 +6,7 @@ export const useTrendingManga = (limit: number = 20) => {
     queryKey: ['trending-manga', limit],
     queryFn: async ({ signal }) => {
       const response = await mangaService.getTrending(limit, 0, signal)
-      return response.data || []
+      return response.data.items || []
     },
   })
 }

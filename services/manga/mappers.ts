@@ -1,7 +1,7 @@
 import { BaseResponse } from '../core/types'
-import { MappedManga } from './types'
+import { Manga } from './types'
 
-export const mangaListMapper = (data: any): BaseResponse<MappedManga[]> => {
+export const mangaListMapper = (data: any): BaseResponse<Manga[]> => {
   if (data?.result === 'ok' && Array.isArray(data.data)) {
     const mappedData = data.data.map((manga: any) => {
       const coverArt = manga.relationships?.find(

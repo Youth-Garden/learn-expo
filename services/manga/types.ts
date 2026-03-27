@@ -5,10 +5,11 @@ export interface Manga {
     title: { [key: string]: string }
     description: { [key: string]: string }
     status: string
-    year: number
-    tags: any[]
+    year?: number
+    tags?: any[]
   }
-  relationships: any[]
+  relationships?: any[]
+  coverUrl?: string | null
 }
 
 export interface CoverArt {
@@ -16,8 +17,4 @@ export interface CoverArt {
   attributes: {
     fileName: string
   }
-}
-
-export interface MappedManga extends Manga {
-  coverUrl: string | null
 }

@@ -7,6 +7,8 @@ import { Pressable } from '@/components/ui/pressable'
 import { Image } from '@/components/ui/image'
 import { Manga } from '@/services/manga/types'
 import { useRouter } from 'expo-router'
+import { useTranslation } from 'react-i18next'
+import { getLocalizedText } from '@/shared/utils/locale-content'
 
 interface MangaListItemProps {
   item: Manga
@@ -14,8 +16,8 @@ interface MangaListItemProps {
 
 export const MangaListItem = ({ item }: MangaListItemProps) => {
   const router = useRouter()
-  const titleObj = item.attributes.title
-  const title = titleObj?.en || titleObj?.vi || Object.values(titleObj || {})[0] || 'Unknown Title'
+  const { t } = useTranslation()
+  const title = getLocalizedText(item.attributes.title, t('common.unknownTitle'))
 
   return (
     <Pressable 
@@ -55,7 +57,7 @@ export const MangaListItem = ({ item }: MangaListItemProps) => {
               <Text className="text-[10px] font-bold text-typography-700 uppercase">CH. 124</Text>
             </Box>
             <Box className="bg-primary-50 px-2.5 py-1 rounded-lg">
-              <Text className="text-[10px] font-bold text-primary-600 uppercase">NEW</Text>
+              <Text className="text-[10px] font-bold text-primary-600 uppercase">{t('common.new')}</Text>
             </Box>
           </HStack>
         </VStack>

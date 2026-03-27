@@ -4,6 +4,7 @@ import { Box } from '@/components/ui/box'
 import { Header } from '@/components/layout/header'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'react-native'
+import { useTranslation } from 'react-i18next'
 
 import { HapticTab } from '@/components/haptic-tab'
 import { IconSymbol } from '@/components/ui/icon-symbol'
@@ -12,6 +13,7 @@ import { useColorScheme } from '@/shared/hooks/use-color-scheme'
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()
+  const { t } = useTranslation()
 
   return (
     <SafeAreaView edges={['top']} style={{ flex: 1, backgroundColor: 'white' }}>
@@ -29,7 +31,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Home',
+            title: t('tabs.home'),
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="house.fill" color={color} />
             ),
@@ -38,7 +40,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="explore"
           options={{
-            title: 'Explore',
+            title: t('tabs.explore'),
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="magnifyingglass" color={color} />
             ),
@@ -47,7 +49,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="updates"
           options={{
-            title: 'Updates',
+            title: t('tabs.updates'),
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="bell.fill" color={color} />
             ),
@@ -56,7 +58,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="library"
           options={{
-            title: 'Library',
+            title: t('tabs.library'),
             tabBarIcon: ({ color }) => (
               <IconSymbol size={28} name="books.vertical.fill" color={color} />
             ),

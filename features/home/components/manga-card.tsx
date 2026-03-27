@@ -6,6 +6,8 @@ import { Pressable } from '@/components/ui/pressable'
 import { Image } from '@/components/ui/image'
 import { Manga } from '@/services/manga/types'
 import { useRouter } from 'expo-router'
+import { useTranslation } from 'react-i18next'
+import { getLocalizedText } from '@/shared/utils/locale-content'
 
 interface MangaCardProps {
   item: Manga
@@ -13,8 +15,8 @@ interface MangaCardProps {
 
 export const MangaCard = ({ item }: MangaCardProps) => {
   const router = useRouter()
-  const titleObj = item.attributes.title
-  const title = titleObj?.en || titleObj?.vi || Object.values(titleObj || {})[0] || 'Unknown Title'
+  const { t } = useTranslation()
+  const title = getLocalizedText(item.attributes.title, t('common.unknownTitle'))
 
   return (
     <Pressable 
@@ -36,7 +38,7 @@ export const MangaCard = ({ item }: MangaCardProps) => {
             </Box>
           )}
           <Box className="absolute top-2 left-2 bg-black/60 px-2 py-0.5 rounded-md backdrop-blur-md">
-            <Text className="text-[10px] text-white font-bold uppercase tracking-tighter">HOT</Text>
+            <Text className="text-[10px] text-white font-bold uppercase tracking-tighter">{t('common.hot')}</Text>
           </Box>
         </Box>
         <VStack className="gap-0.5">
@@ -44,7 +46,7 @@ export const MangaCard = ({ item }: MangaCardProps) => {
             {title}
           </Text>
           <Text className="text-[10px] text-typography-500 font-medium uppercase tracking-wider">
-            {item.attributes.status || 'Ongoing'}
+            {item.attributes.status || t('common.ongoing')}
           </Text>
         </VStack>
       </VStack>

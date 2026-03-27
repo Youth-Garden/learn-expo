@@ -1,0 +1,41 @@
+{
+  "home": {
+    "trending": "Xu Hướng",
+    "freshArrivals": "Mới Cập Nhật",
+    "loadMore": "Tải thêm truyện",
+    "loading": "Đang tải..."
+  },
+  "detail": {
+    "startReading": "Bắt Đầu Đọc",
+    "storyline": "Nội Dung",
+    "genres": "Thể Loại",
+    "notFound": "Không tìm thấy truyện",
+    "goBack": "Quay Lại"
+  },
+  "tabs": {
+    "home": "Trang Chủ",
+    "explore": "Khám Phá",
+    "updates": "Cập Nhật",
+    "library": "Thư Viện"
+  },
+  "explore": {
+    "title": "Khám Phá",
+    "genresTitle": "Thế Giới Thể Loại",
+    "genresDescription": "Khám phá truyện ở mọi thể loại: Hành Động, Tình Cảm, Giả Tưởng và nhiều hơn nữa. Bộ sưu tập được cập nhật hàng ngày.",
+    "smartTitle": "Tìm Kiếm Thông Minh",
+    "smartDescription": "Tìm đúng truyện bạn muốn qua tag, trạng thái hoặc tác giả."
+  },
+  "empty": {
+    "updatesTitle": "Hãy Chờ Đợi!",
+    "updatesDescription": "Chúng tôi sẽ thông báo khi truyện bạn theo dõi có chapter mới.",
+    "libraryTitle": "Thư Viện Trống",
+    "libraryDescription": "Hãy thêm truyện yêu thích vào thư viện để theo dõi tiến trình đọc."
+  },
+  "common": {
+    "unknownTitle": "Không rõ tên",
+    "noDescription": "Chưa có mô tả.",
+    "hot": "HOT",
+    "new": "MỚI",
+    "ongoing": "Đang ra"
+  }
+}

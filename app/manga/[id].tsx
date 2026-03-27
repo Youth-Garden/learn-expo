@@ -12,13 +12,14 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { BookOpen, Heart, Share2 } from 'lucide-react-native'
 import React from 'react'
-import { Dimensions, ScrollView } from 'react-native'
-
-const { width } = Dimensions.get('window')
+import { ScrollView } from 'react-native'
+import { useTranslation } from 'react-i18next'
+import { getLocalizedText } from '@/shared/utils/locale-content'
 
 export default function MangaDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>()
   const router = useRouter()
+  const { t } = useTranslation()
   const { data: manga, isLoading, isError } = useMangaDetail(id!)
 
   if (isLoading) {
@@ -33,24 +34,20 @@ export default function MangaDetailScreen() {
     return (
       <Box className="flex-1 bg-background-0 items-center justify-center p-6">
         <Text className="text-xl font-bold text-typography-900 mb-2">
-          Manga not found
+          {t('detail.notFound')}
         </Text>
         <Pressable
           onPress={() => router.back()}
           className="bg-primary-500 px-6 py-2 rounded-full"
         >
-          <Text className="text-white font-bold">Go Back</Text>
+          <Text className="text-white font-bold">{t('detail.goBack')}</Text>
         </Pressable>
       </Box>
     )
   }
 
-  const title =
-    manga.attributes.title.en || Object.values(manga.attributes.title)[0]
-  const description =
-    manga.attributes.description.en ||
-    Object.values(manga.attributes.description)[0] ||
-    'No description available.'
+  const title = getLocalizedText(manga.attributes.title, t('common.unknownTitle'))
+  const description = getLocalizedText(manga.attributes.description, t('common.noDescription'))
 
   return (
     <Box className="flex-1 bg-background-0">
@@ -121,7 +118,7 @@ export default function MangaDetailScreen() {
             <Pressable className="flex-1 bg-primary-500 h-14 rounded-2xl flex-row items-center justify-center gap-3 active:bg-primary-600 shadow-md">
               <BookOpen size={20} color="white" />
               <Text className="text-white font-bold text-lg">
-                Start Reading
+                {t('detail.startReading')}
               </Text>
             </Pressable>
             <Pressable className="w-14 h-14 bg-background-50 border border-background-100 rounded-2xl items-center justify-center active:bg-background-100">
@@ -132,7 +129,7 @@ export default function MangaDetailScreen() {
           {/* Description */}
           <VStack className="gap-3">
             <Text className="text-typography-900 font-bold text-xl">
-              Storyline
+              {t('detail.storyline')}
             </Text>
             <Text className="text-typography-600 leading-7 text-base">
               {description.split('\n')[0]}
@@ -142,16 +139,16 @@ export default function MangaDetailScreen() {
           {/* Tags */}
           <VStack className="gap-4">
             <Text className="text-typography-900 font-bold text-xl">
-              Genres
+              {t('detail.genres')}
             </Text>
             <HStack className="flex-wrap gap-2">
-              {manga.attributes.tags.slice(0, 6).map((tag: any) => (
+              {(manga.attributes.tags ?? []).slice(0, 6).map((tag: any) => (
                 <Box
                   key={tag.id}
                   className="bg-background-50 px-4 py-2 rounded-xl border border-background-100"
                 >
                   <Text className="text-typography-700 text-sm font-medium">
-                    {tag.attributes.name.en}
+                    {getLocalizedText(tag.attributes.name)}
                   </Text>
                 </Box>
               ))}

@@ -1,0 +1,41 @@
+{
+  "home": {
+    "trending": "Trending Now",
+    "freshArrivals": "Fresh Arrivals",
+    "loadMore": "Load more manga",
+    "loading": "Loading more..."
+  },
+  "detail": {
+    "startReading": "Start Reading",
+    "storyline": "Storyline",
+    "genres": "Genres",
+    "notFound": "Manga not found",
+    "goBack": "Go Back"
+  },
+  "tabs": {
+    "home": "Home",
+    "explore": "Explore",
+    "updates": "Updates",
+    "library": "Library"
+  },
+  "explore": {
+    "title": "Explore",
+    "genresTitle": "Universe of Genres",
+    "genresDescription": "Discover stories across Action, Romance, Fantasy, and more. Our collection is curated daily with the latest releases.",
+    "smartTitle": "Smart Discovery",
+    "smartDescription": "Use our advanced search to find exactly what you're looking for by tags, status, or artist."
+  },
+  "empty": {
+    "updatesTitle": "Stay Tuned!",
+    "updatesDescription": "We'll notify you here as soon as your followed manga get new chapters.",
+    "libraryTitle": "Your Library is Empty",
+    "libraryDescription": "Start adding your favorite manga to your library to track your progress and never miss a release."
+  },
+  "common": {
+    "unknownTitle": "Unknown Title",
+    "noDescription": "No description available.",
+    "hot": "HOT",
+    "new": "NEW",
+    "ongoing": "Ongoing"
+  }
+}

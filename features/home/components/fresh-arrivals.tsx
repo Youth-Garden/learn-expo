@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useInfiniteLatestManga } from '../hooks/use-infinite-latest-manga'
 import { Box } from '@/components/ui/box'
 import { Text } from '@/components/ui/text'
@@ -10,6 +11,7 @@ import { Pressable } from '@/components/ui/pressable'
 import { MangaListItem } from './manga-list-item'
 
 export const FreshArrivals = () => {
+  const { t } = useTranslation()
   const { 
     data, 
     isLoading, 
@@ -37,7 +39,7 @@ export const FreshArrivals = () => {
     <VStack className="mb-12">
       <HStack className="justify-between items-center mb-8">
         <VStack className="gap-0.5">
-          <Heading size="2xl" className="text-typography-900 font-extrabold tracking-tight">Fresh Arrivals</Heading>
+          <Heading size="2xl" className="text-typography-900 font-extrabold tracking-tight">{t('home.freshArrivals')}</Heading>
           <Box className="h-1 w-12 bg-green-500 rounded-full" />
         </VStack>
       </HStack>
@@ -57,10 +59,10 @@ export const FreshArrivals = () => {
           {isFetchingNextPage ? (
             <HStack className="gap-2 items-center">
               <Spinner size="small" />
-              <Text className="text-xs font-bold text-typography-500 tracking-wide">Loading more...</Text>
+              <Text className="text-xs font-bold text-typography-500 tracking-wide">{t('home.loading')}</Text>
             </HStack>
           ) : (
-            <Text className="text-xs font-bold text-typography-900 tracking-wider uppercase">Load more manga</Text>
+            <Text className="text-xs font-bold text-typography-900 tracking-wider uppercase">{t('home.loadMore')}</Text>
           )}
         </Pressable>
       )}

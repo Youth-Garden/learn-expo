@@ -1,5 +1,6 @@
 import React from 'react'
 import { FlatList } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import { useTrendingManga } from '../hooks/use-trending-manga'
 import { Box } from '@/components/ui/box'
 import { Text } from '@/components/ui/text'
@@ -11,6 +12,7 @@ import { Pressable } from '@/components/ui/pressable'
 import { MangaCard } from './manga-card'
 
 export const TrendingNow = () => {
+  const { t } = useTranslation()
   const { data: mangas, isLoading, isError } = useTrendingManga(15)
 
   if (isLoading) {
@@ -33,7 +35,7 @@ export const TrendingNow = () => {
     <VStack className="mb-10">
       <HStack className="justify-between items-center mb-6">
         <VStack className="gap-0.5">
-          <Heading size="2xl" className="text-typography-900 font-extrabold tracking-tight">Trending Now</Heading>
+          <Heading size="2xl" className="text-typography-900 font-extrabold tracking-tight">{t('home.trending')}</Heading>
           <Box className="h-1 w-10 bg-primary-500 rounded-full" />
         </VStack>
         <Pressable className="bg-primary-50 px-4 py-1.5 rounded-full active:bg-primary-100">

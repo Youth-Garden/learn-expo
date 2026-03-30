@@ -10,5 +10,7 @@ export const getLocalizedText = (
 ): string => {
   if (!textObj) return fallback
   const userLang = getLocales()[0]?.languageCode ?? 'en'
-  return textObj[userLang] || textObj.en || Object.values(textObj)[0] || fallback
+  return (
+    textObj[userLang] || textObj.en || Object.values(textObj)[0] || fallback
+  )
 }

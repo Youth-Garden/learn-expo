@@ -9,7 +9,12 @@ interface PortalItem {
 }
 
 export interface IPortalContext {
-  onPresent: (id: string, Component: React.ComponentType<any>, data?: any, disableCloseByBackdrop?: boolean) => void
+  onPresent: (
+    id: string,
+    Component: React.ComponentType<any>,
+    data?: any,
+    disableCloseByBackdrop?: boolean,
+  ) => void
   onDismiss: (id?: string) => void
   closeAll: () => void
   ids: string[]
@@ -24,15 +29,25 @@ export const PortalContext = React.createContext<IPortalContext>({
 
 const DISMISS_DELAY = 200
 
-export const PortalProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+export const PortalProvider: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
   const [items, setItems] = useState<PortalItem[]>([])
   const timers = useRef<Record<string, ReturnType<typeof setTimeout>>>({})
 
   const present = useCallback(
-    (id: string, Component: React.ComponentType<any>, data?: any, disableCloseByBackdrop = false) => {
+    (
+      id: string,
+      Component: React.ComponentType<any>,
+      data?: any,
+      disableCloseByBackdrop = false,
+    ) => {
       setItems((prev) => {
         if (prev.some((i) => i.id === id)) return prev
-        return [...prev, { id, Component, data, disableCloseByBackdrop, isOpen: true }]
+        return [
+          ...prev,
+          { id, Component, data, disableCloseByBackdrop, isOpen: true },
+        ]
       })
     },
     [],
@@ -55,10 +70,15 @@ export const PortalProvider: React.FC<React.PropsWithChildren> = ({ children }) 
         }
 
         // Schedule cleanup after exit animation
-        timers.current[targetId] = setTimeout(() => removeItem(targetId), DISMISS_DELAY)
+        timers.current[targetId] = setTimeout(
+          () => removeItem(targetId),
+          DISMISS_DELAY,
+        )
 
         // Set isOpen=false to trigger exit animation
-        return prev.map((i) => (i.id === targetId ? { ...i, isOpen: false } : i))
+        return prev.map((i) =>
+          i.id === targetId ? { ...i, isOpen: false } : i,
+        )
       })
     },
     [removeItem],

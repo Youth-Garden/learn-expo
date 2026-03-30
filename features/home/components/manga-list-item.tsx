@@ -17,10 +17,13 @@ interface MangaListItemProps {
 export const MangaListItem = ({ item }: MangaListItemProps) => {
   const router = useRouter()
   const { t } = useTranslation()
-  const title = getLocalizedText(item.attributes.title, t('common.unknownTitle'))
+  const title = getLocalizedText(
+    item.attributes.title,
+    t('common.unknownTitle'),
+  )
 
   return (
-    <Pressable 
+    <Pressable
       key={item.id}
       onPress={() => router.push(`/manga/${item.id}` as any)}
       className="mb-6 active:opacity-80"
@@ -28,7 +31,7 @@ export const MangaListItem = ({ item }: MangaListItemProps) => {
       <HStack className="gap-5 items-center">
         <Box className="relative">
           {item.coverUrl ? (
-            <Image 
+            <Image
               source={{ uri: item.coverUrl }}
               className="w-24 h-32 rounded-2xl bg-background-200"
               alt={title || 'Cover'}
@@ -45,7 +48,10 @@ export const MangaListItem = ({ item }: MangaListItemProps) => {
         </Box>
         <VStack className="flex-1 gap-2.5">
           <VStack className="gap-1">
-            <Text className="font-extrabold text-base leading-tight text-typography-900 line-clamp-2" numberOfLines={2}>
+            <Text
+              className="font-extrabold text-base leading-tight text-typography-900 line-clamp-2"
+              numberOfLines={2}
+            >
               {title}
             </Text>
             <Text className="text-xs text-typography-500 font-medium tracking-wide">
@@ -54,10 +60,14 @@ export const MangaListItem = ({ item }: MangaListItemProps) => {
           </VStack>
           <HStack className="gap-2">
             <Box className="bg-background-100 px-2.5 py-1 rounded-lg">
-              <Text className="text-[10px] font-bold text-typography-700 uppercase">CH. 124</Text>
+              <Text className="text-[10px] font-bold text-typography-700 uppercase">
+                CH. 124
+              </Text>
             </Box>
             <Box className="bg-primary-50 px-2.5 py-1 rounded-lg">
-              <Text className="text-[10px] font-bold text-primary-600 uppercase">{t('common.new')}</Text>
+              <Text className="text-[10px] font-bold text-primary-600 uppercase">
+                {t('common.new')}
+              </Text>
             </Box>
           </HStack>
         </VStack>

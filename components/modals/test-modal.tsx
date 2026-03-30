@@ -20,7 +20,11 @@ interface TestModalData {
   description?: string
 }
 
-const TestModal: React.FC<PortalProps<TestModalData>> = ({ onDismiss, data, isOpen }) => {
+const TestModal: React.FC<PortalProps<TestModalData>> = ({
+  onDismiss,
+  data,
+  isOpen,
+}) => {
   return (
     <Modal isOpen={isOpen} onClose={onDismiss} size="md">
       <ModalBackdrop />

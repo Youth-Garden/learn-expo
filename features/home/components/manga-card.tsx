@@ -16,17 +16,20 @@ interface MangaCardProps {
 export const MangaCard = ({ item }: MangaCardProps) => {
   const router = useRouter()
   const { t } = useTranslation()
-  const title = getLocalizedText(item.attributes.title, t('common.unknownTitle'))
+  const title = getLocalizedText(
+    item.attributes.title,
+    t('common.unknownTitle'),
+  )
 
   return (
-    <Pressable 
+    <Pressable
       onPress={() => router.push(`/manga/${item.id}` as any)}
       className="mr-5 w-36 active:opacity-80 transition-opacity"
     >
       <VStack className="gap-2.5">
         <Box className="relative">
           {item.coverUrl ? (
-            <Image 
+            <Image
               source={{ uri: item.coverUrl }}
               className="w-full h-52 rounded-2xl bg-background-200 shadow-sm"
               alt={title || 'Cover'}
@@ -34,15 +37,22 @@ export const MangaCard = ({ item }: MangaCardProps) => {
             />
           ) : (
             <Box className="w-full h-52 rounded-2xl bg-background-200 items-center justify-center border border-dashed border-background-300">
-              <Text className="text-typography-400 text-xs font-medium uppercase tracking-wider">Empty</Text>
+              <Text className="text-typography-400 text-xs font-medium uppercase tracking-wider">
+                Empty
+              </Text>
             </Box>
           )}
           <Box className="absolute top-2 left-2 bg-black/60 px-2 py-0.5 rounded-md backdrop-blur-md">
-            <Text className="text-[10px] text-white font-bold uppercase tracking-tighter">{t('common.hot')}</Text>
+            <Text className="text-[10px] text-white font-bold uppercase tracking-tighter">
+              {t('common.hot')}
+            </Text>
           </Box>
         </Box>
         <VStack className="gap-0.5">
-          <Text className="font-bold text-sm leading-snug text-typography-900" numberOfLines={2}>
+          <Text
+            className="font-bold text-sm leading-snug text-typography-900"
+            numberOfLines={2}
+          >
             {title}
           </Text>
           <Text className="text-[10px] text-typography-500 font-medium uppercase tracking-wider">

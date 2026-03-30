@@ -26,7 +26,9 @@ export const TrendingNow = () => {
   if (isError || !mangas) {
     return (
       <Box className="h-72 items-center justify-center rounded-2xl bg-background-50/50">
-        <Text className="text-error-500 font-medium italic">Oops! Couldn&apos;t catch the heat 🔥</Text>
+        <Text className="text-error-500 font-medium italic">
+          Oops! Couldn&apos;t catch the heat 🔥
+        </Text>
       </Box>
     )
   }
@@ -35,14 +37,19 @@ export const TrendingNow = () => {
     <VStack className="mb-10">
       <HStack className="justify-between items-center mb-6">
         <VStack className="gap-0.5">
-          <Heading size="2xl" className="text-typography-900 font-extrabold tracking-tight">{t('home.trending')}</Heading>
+          <Heading
+            size="2xl"
+            className="text-typography-900 font-extrabold tracking-tight"
+          >
+            {t('home.trending')}
+          </Heading>
           <Box className="h-1 w-10 bg-primary-500 rounded-full" />
         </VStack>
         <Pressable className="bg-primary-50 px-4 py-1.5 rounded-full active:bg-primary-100">
           <Text className="text-primary-600 font-bold text-xs">View all</Text>
         </Pressable>
       </HStack>
-      
+
       <FlatList
         horizontal
         data={mangas}

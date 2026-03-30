@@ -13,7 +13,7 @@ export const DiscoveryBar = () => {
     <Box className="mb-10 w-full">
       <HStack className="items-center bg-background-100/80 px-5 py-3.5 rounded-3xl border border-background-200/50 shadow-sm">
         <IconSymbol name="magnifyingglass" size={20} color="#6B7280" />
-        <TextInput 
+        <TextInput
           placeholder="What's your next adventure?"
           className="flex-1 ml-3.5 text-typography-900 text-sm font-medium"
           placeholderTextColor="#9CA3AF"
@@ -22,15 +22,19 @@ export const DiscoveryBar = () => {
           <IconSymbol name="slider.horizontal.3" size={16} color="white" />
         </Box>
       </HStack>
-      
+
       <HStack className="mt-4 gap-2.5 flex-wrap">
-        <Text className="text-[10px] text-typography-400 font-bold uppercase tracking-widest mr-1 mt-1.5">Hot 🔥</Text>
+        <Text className="text-[10px] text-typography-400 font-bold uppercase tracking-widest mr-1 mt-1.5">
+          Hot 🔥
+        </Text>
         {hotTags.map((tag) => (
-          <Pressable 
+          <Pressable
             key={tag}
             className="bg-background-50 px-3.5 py-1.5 rounded-full border border-background-100 active:bg-background-100"
           >
-            <Text className="text-xs text-typography-600 font-semibold">{tag}</Text>
+            <Text className="text-xs text-typography-600 font-semibold">
+              {tag}
+            </Text>
           </Pressable>
         ))}
       </HStack>

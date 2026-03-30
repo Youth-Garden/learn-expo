@@ -48,7 +48,13 @@ export default function ExploreScreen() {
             {/* Portal System Test — remove after verification */}
             <VStack className="gap-2">
               <Button
-                onPress={() => presentTestPortal({ title: 'usePortal Works! 🎉', description: 'The global portal system is fully integrated.' })}
+                onPress={() =>
+                  presentTestPortal({
+                    title: 'usePortal Works! 🎉',
+                    description:
+                      'The global portal system is fully integrated.',
+                  })
+                }
                 className="rounded-2xl"
               >
                 <ButtonText>Test Modal System</ButtonText>

@@ -8,7 +8,10 @@ export default function usePortal<S>(
   Component: React.FC<PortalProps<S>>,
   key?: string,
 ): [
-  (data?: S, disableCloseByBackdrop?: boolean) => { waitingClose: () => Promise<any> | any },
+  (
+    data?: S,
+    disableCloseByBackdrop?: boolean,
+  ) => { waitingClose: () => Promise<any> | any },
   () => void,
   boolean,
 ] {
@@ -24,7 +27,12 @@ export default function usePortal<S>(
       }
 
       setCurrentId(id)
-      onPresent(id, Component as React.FC<any>, data || {}, disableCloseByBackdrop)
+      onPresent(
+        id,
+        Component as React.FC<any>,
+        data || {},
+        disableCloseByBackdrop,
+      )
 
       return {
         waitingClose: async () => {

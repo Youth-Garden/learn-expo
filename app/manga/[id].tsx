@@ -46,8 +46,14 @@ export default function MangaDetailScreen() {
     )
   }
 
-  const title = getLocalizedText(manga.attributes.title, t('common.unknownTitle'))
-  const description = getLocalizedText(manga.attributes.description, t('common.noDescription'))
+  const title = getLocalizedText(
+    manga.attributes.title,
+    t('common.unknownTitle'),
+  )
+  const description = getLocalizedText(
+    manga.attributes.description,
+    t('common.noDescription'),
+  )
 
   return (
     <Box className="flex-1 bg-background-0">
@@ -69,8 +75,8 @@ export default function MangaDetailScreen() {
 
           {/* Top Bar Controls using Universal Header */}
           <Box className="absolute top-14 left-0 right-0 px-6">
-            <Header 
-              showBack 
+            <Header
+              showBack
               showAvatar={false}
               variant="transparent"
               title=""

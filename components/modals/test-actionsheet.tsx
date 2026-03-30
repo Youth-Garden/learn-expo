@@ -21,7 +21,10 @@ interface TestActionsheetData {
   title?: string
 }
 
-const TestActionsheet: React.FC<PortalProps<TestActionsheetData>> = ({ onDismiss, isOpen }) => {
+const TestActionsheet: React.FC<PortalProps<TestActionsheetData>> = ({
+  onDismiss,
+  isOpen,
+}) => {
   return (
     <Actionsheet isOpen={isOpen} onClose={onDismiss}>
       <ActionsheetBackdrop />
@@ -43,7 +46,9 @@ const TestActionsheet: React.FC<PortalProps<TestActionsheetData>> = ({ onDismiss
         </ActionsheetItem>
         <ActionsheetItem onPress={onDismiss}>
           <ActionsheetIcon as={TrashIcon} className="mr-2 text-error-500" />
-          <ActionsheetItemText className="text-error-500">Delete Cache</ActionsheetItemText>
+          <ActionsheetItemText className="text-error-500">
+            Delete Cache
+          </ActionsheetItemText>
         </ActionsheetItem>
       </ActionsheetContent>
     </Actionsheet>

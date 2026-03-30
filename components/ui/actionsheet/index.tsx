@@ -309,6 +309,27 @@ const ActionsheetContent = React.forwardRef<
 >(function ActionsheetContent({ className, ...props }, ref) {
   return (
     <UIActionsheet.Content
+      initial={{
+        opacity: 0,
+        translateY: 300,
+      }}
+      animate={{
+        opacity: 1,
+        translateY: 0,
+      }}
+      exit={{
+        opacity: 0,
+        translateY: 300,
+      }}
+      transition={{
+        type: 'spring',
+        damping: 18,
+        stiffness: 250,
+        opacity: {
+          type: 'timing',
+          duration: 250,
+        },
+      }}
       className={actionsheetContentStyle({
         class: className,
       })}
@@ -408,6 +429,15 @@ const ActionsheetBackdrop = React.forwardRef<
       }}
       exit={{
         opacity: 0,
+      }}
+      transition={{
+        type: 'spring',
+        damping: 18,
+        stiffness: 250,
+        opacity: {
+          type: 'timing',
+          duration: 250,
+        },
       }}
       {...props}
       className={actionsheetBackdropStyle({

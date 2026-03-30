@@ -6,19 +6,19 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from '@react-navigation/native'
-import React from 'react'
-import { ModalProvider } from './modal-provider'
+import React, { PropsWithChildren } from 'react'
+import { PortalProvider } from './portal-provider'
 
-export const UIProvider = ({ children }: { children: React.ReactNode }) => {
+export const UIProvider = ({ children }: PropsWithChildren) => {
   const colorScheme = useColorScheme()
 
   return (
     <GluestackUIProvider mode="light">
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        {children}
-
-        <ModalProvider />
-        <ToastProvider />
+        <PortalProvider>
+          {children}
+          <ToastProvider />
+        </PortalProvider>
       </ThemeProvider>
     </GluestackUIProvider>
   )

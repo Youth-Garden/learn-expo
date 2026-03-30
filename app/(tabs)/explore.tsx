@@ -5,14 +5,16 @@ import { VStack } from '@/components/ui/vstack'
 import { Button, ButtonText } from '@/components/ui/button'
 import { DiscoveryBar } from '@/features/home/components/discovery-bar'
 import TestModal from '@/components/modals/test-modal'
-import useModal from '@/shared/hooks/use-modal'
+import TestActionsheet from '@/components/modals/test-actionsheet'
+import usePortal from '@/shared/hooks/use-portal'
 import React from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 
 export default function ExploreScreen() {
   const { t } = useTranslation()
-  const [presentTestModal] = useModal(TestModal)
+  const [presentTestPortal] = usePortal(TestModal)
+  const [presentTestActionsheet] = usePortal(TestActionsheet)
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} className="bg-white">
@@ -43,13 +45,23 @@ export default function ExploreScreen() {
               </Text>
             </Box>
 
-            {/* Modal System Test — remove after verification */}
-            <Button
-              onPress={() => presentTestModal({ title: 'useModal Works! 🎉', description: 'The native modal system is fully integrated.' })}
-              className="rounded-2xl"
-            >
-              <ButtonText>Test Modal System</ButtonText>
-            </Button>
+            {/* Portal System Test — remove after verification */}
+            <VStack className="gap-2">
+              <Button
+                onPress={() => presentTestPortal({ title: 'usePortal Works! 🎉', description: 'The global portal system is fully integrated.' })}
+                className="rounded-2xl"
+              >
+                <ButtonText>Test Modal System</ButtonText>
+              </Button>
+
+              <Button
+                variant="outline"
+                onPress={() => presentTestActionsheet()}
+                className="rounded-2xl"
+              >
+                <ButtonText>Test Actionsheet System</ButtonText>
+              </Button>
+            </VStack>
           </VStack>
         </VStack>
       </Box>
